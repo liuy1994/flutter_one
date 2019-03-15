@@ -43,22 +43,28 @@ class MyAppBar extends StatelessWidget{
 class MyScafflod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
-        children: <Widget>[
-          MyAppBar(
-            title:Text(
-              'Example title',
-              style:Theme.of(context).primaryTextTheme.title,
-            )
-          ),
-          Expanded(
-            child: Center(
-              child: Text('Hello world!'),
-            ),
-          )
-        ],
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('Start up Generator'),
       ),
+      body: Material(
+        child: Column(
+          children: <Widget>[
+            MyAppBar(
+              title:Text(
+                'Example title',
+                style:Theme.of(context).primaryTextTheme.title,
+              )
+            ),
+            Expanded(
+              child: Center(
+                child: Text('Hello world!'),
+              
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 }
