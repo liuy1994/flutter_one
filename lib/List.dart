@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-class ListApp extends StatelessWidget{
+class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

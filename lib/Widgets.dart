@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyWidgets extends StatelessWidget{
+class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My app',
