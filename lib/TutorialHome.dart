@@ -80,11 +80,12 @@ class _CounterState extends State<Counter> {
     // TODO: implement build
     return Row(
       children: <Widget>[
-        RaisedButton(
+        new CounterIncrementor(
           onPressed: _increment,
-          child: Text('Increment'),
         ),
-        Text('Count: $_count')
+        new CounterDisplay(
+          count: _count,
+        )
       ],
     );
   }
@@ -93,8 +94,22 @@ class _CounterState extends State<Counter> {
 class CounterDisplay extends StatelessWidget {
   CounterDisplay({this.count});
   final int count;
+  @override
   Widget build(BuildContext context) {
+    return Text('Count: $count');
+  }
+}
 
+class CounterIncrementor extends StatelessWidget {
+  CounterIncrementor({this.onPressed});
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return RaisedButton(
+      onPressed: onPressed,
+      child: Text('Increment'),
+    );
   }
 }
 
