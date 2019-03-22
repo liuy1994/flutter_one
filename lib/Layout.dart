@@ -11,14 +11,18 @@ class MyApp extends StatelessWidget{
         appBar: new AppBar(
           title: Text('layout'),
         ),
-        body: new Column(
+        body: new ListView(
           children: <Widget>[
-            new ImageSection(),
-            new TitleSection(),
-            new ButtonSection(),
-            new TextSection(),
+//            new ImageSection(),
+//            new TitleSection(),
+//            new ButtonSection(),
+//            new TextSection(),
+//            new StarsSection()
           ],
         ),
+//      body: new Center(
+//        child: new BuildGrid(),
+//      ),
       ),
     );
   }
@@ -124,6 +128,61 @@ class TextSection extends StatelessWidget {
             'Activities enjoyed here include rowing, and riding the summer toboggan run.',
         softWrap: true,
       ),
+    );
+  }
+}
+
+class StarsSection extends StatelessWidget {
+   @override
+  Widget build(BuildContext context) {
+    return new Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        new Icon(Icons.star, color: Colors.green[100]),
+        new Icon(Icons.star, color: Colors.green[300]),
+        new Icon(Icons.star, color: Colors.green[500]),
+        new Icon(Icons.star, color: Colors.green[700]),
+        new Icon(Icons.star, color: Colors.green[900]),
+      ],
+    );
+  }
+}
+
+List<Container> _buildGridTileList(int count) {
+  return new List<Container>.generate(
+    count, (int index) => new Container(child: new Text('Text $index'),)
+  );
+}
+
+class BuildGrid extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new GridView.extent(
+      maxCrossAxisExtent: 150,
+      padding: const EdgeInsets.all(4),
+      mainAxisSpacing: 4,
+      crossAxisSpacing: 4,
+      children: _buildGridTileList(30),
+    );;
+  }
+}
+
+class StackSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Stack(
+      alignment: const Alignment(0.6, 0.6),
+      children: <Widget>[
+        new CircleAvatar(
+          backgroundImage: new AssetImage('images/gj01.jpg'),
+          radius: 100,
+        ),
+        new Container(
+          decoration: new BoxDecoration(
+            color: Colors.black45
+          ),
+        )
+      ],
     );
   }
 }
