@@ -3,5 +3,7 @@ import 'package:flutter/material.dart';
 //import './Widgets.dart';
 //import './TutorialHome.dart';
 //import './Product.dart';
-import 'AnimatedList.dart';
+//import 'AnimatedList.dart';
+import 'Layout.dart';
+
 void main() => runApp(new MyApp());
