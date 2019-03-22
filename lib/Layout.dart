@@ -27,14 +27,12 @@ class MyApp extends StatelessWidget{
 class ImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new ListView(
-      children: <Widget>[
-        new Image.asset(
-          'images/gj01.jpg',
-          height: 240,
-          fit: BoxFit.cover,
-        )
-      ],
+    return new Container(
+      child: new Image.asset(
+        'images/gj01.jpg',
+        height: 240,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }
