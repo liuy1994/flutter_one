@@ -1,33 +1,28 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: new ThemeData(
-        primaryColor: Colors.blue
-      ),
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: Text('layout'),
-        ),
-        body: new ListView(
-          children: <Widget>[
-            new ImageSection(),
-            new TitleSection(),
-            new ButtonSection(),
-            new TextSection(),
-            new StarsSection()
-          ],
-        ),
-//      body: new Center(
-//        child: new BuildGrid(),
-//      ),
-      ),
+        home: new Scaffold(
+          appBar: new AppBar(
+              title: new Text('App Bar')
+          ),
+          body: new Center(
+            child: new ListView(
+              children: <Widget>[
+                new ImageSection(),
+                new TitleSection(),
+                new ButtonSection(),
+                new TextSection(),
+                new StarsSection()
+              ],
+            ),
+          ),
+        )
     );
   }
 }
-
 class ImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -66,13 +61,47 @@ class TitleSection extends StatelessWidget {
               ],
             ),
           ),
-          new Icon(
-            Icons.star,
-            color: Colors.red[500],
-          ),
-          new Text('41')
+          new FavoriteWidget()
         ],
       ),
+    );
+  }
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => new _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget>{
+  bool _isFavorited = true;
+  int _favotiteCount = 41;
+  void _toggleFavorite() {
+    setState(() {
+      _favotiteCount = _isFavorited ? _favotiteCount - 1 : _favotiteCount + 1;
+      _isFavorited = !_isFavorited;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return new Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        new Container(
+          padding: const EdgeInsets.all(0),
+          child: new IconButton(
+              icon: _isFavorited ? new Icon(Icons.star) : new Icon(Icons.star_border),
+              color: Colors.red[500],
+              onPressed: _toggleFavorite
+          ),
+        ),
+        new SizedBox(
+          width: 18,
+          child: new Container(
+              child: new Text('$_favotiteCount')
+          ),
+        ),
+      ],
     );
   }
 }
@@ -133,7 +162,7 @@ class TextSection extends StatelessWidget {
 }
 
 class StarsSection extends StatelessWidget {
-   @override
+  @override
   Widget build(BuildContext context) {
     return new Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -143,45 +172,6 @@ class StarsSection extends StatelessWidget {
         new Icon(Icons.star, color: Colors.green[500]),
         new Icon(Icons.star, color: Colors.green[700]),
         new Icon(Icons.star, color: Colors.green[900]),
-      ],
-    );
-  }
-}
-
-List<Container> _buildGridTileList(int count) {
-  return new List<Container>.generate(
-    count, (int index) => new Container(child: new Text('Text $index'),)
-  );
-}
-
-class BuildGrid extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new GridView.extent(
-      maxCrossAxisExtent: 150,
-      padding: const EdgeInsets.all(4),
-      mainAxisSpacing: 4,
-      crossAxisSpacing: 4,
-      children: _buildGridTileList(30),
-    );;
-  }
-}
-
-class StackSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Stack(
-      alignment: const Alignment(0.6, 0.6),
-      children: <Widget>[
-        new CircleAvatar(
-          backgroundImage: new AssetImage('images/gj01.jpg'),
-          radius: 100,
-        ),
-        new Container(
-          decoration: new BoxDecoration(
-            color: Colors.black45
-          ),
-        )
       ],
     );
   }
