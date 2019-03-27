@@ -13,11 +13,11 @@ class MyApp extends StatelessWidget{
         ),
         body: new ListView(
           children: <Widget>[
-//            new ImageSection(),
-//            new TitleSection(),
-//            new ButtonSection(),
-//            new TextSection(),
-//            new StarsSection()
+            new ImageSection(),
+            new TitleSection(),
+            new ButtonSection(),
+            new TextSection(),
+            new StarsSection()
           ],
         ),
 //      body: new Center(
