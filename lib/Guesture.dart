@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
           title: new Text('Guestures'),
         ),
         body: new Center(
-          child: new Text('Center'),
+          child: new Text('text')
         ),
       ),
     );
